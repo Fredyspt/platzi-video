@@ -1,5 +1,35 @@
+html {
+  height: auto;
+}
+
 body {
-  margin: 0;
-  background-color: white;
-  color: red;
+  background-attachment: fixed;
+  background-image: linear-gradient(to right, #1d4350, #a43931);
+  background-repeat: no-repeat;
+  font-family: "Mulish", sans-serif;
+  overflow-x: hidden;
+}
+
+::placeholder{
+  color: white;
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar {
+  width: 8px; 
+  height: 8px;   
+  background:rgba(255,255,255,.4);
+  border-radius: 4px;
+  display: none;
+}
+::-webkit-scrollbar:hover {
+  background: #b3b3b3;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar:hover:active {
+  background: #999;
 }

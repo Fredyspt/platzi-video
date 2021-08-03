@@ -1,0 +1,27 @@
+.carousel{
+  overflow-x: scroll;
+  padding: 10px ;
+  position: relative;
+  width: auto;
+}
+
+.carousel__container{
+  margin: 70px 0px;
+  padding-bottom: 10px;
+  white-space: nowrap;
+}
+
+/* Cuando se haga hover sobre el container, a .carousel-item se les aplica la
+opacidad de 0.3 */
+
+.carousel__container:hover .carousel-item{
+  opacity: 0.3;
+}
+
+/* Cuando se haga hover sobre el container y el hover sea sobre un item, 
+darle al item escala de 1.5 y opacidad de 1 */
+
+.carousel__container:hover .carousel-item:hover{
+  opacity: 1;
+  transform: scale(1.5);
+}

@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    assetModuleFilename: 'assets/[hash].[ext]'
   },
   resolve: {
     extensions: ['.js', '.jsx']
@@ -27,7 +28,7 @@ module.exports = {
         }
       },
       {
-        test: /.s?css$/,
+        test: /\.s?css$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -35,6 +36,10 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.png$/,
+        type: 'asset/resource'
       }
     ]
   },
