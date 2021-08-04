@@ -1,13 +1,14 @@
-html {
-  height: auto;
+@import './Vars.scss';
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background-attachment: fixed;
-  background-image: linear-gradient(to right, #1d4350, #a43931);
-  background-repeat: no-repeat;
-  font-family: "Mulish", sans-serif;
+  background: $main-color;
+  font-family: $theme-font;
   overflow-x: hidden;
+  margin: 0;
 }
 
 ::placeholder{

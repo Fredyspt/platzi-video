@@ -7,7 +7,7 @@ const Categories = (props) => {
   
   return (
     <div className="categories">
-      <h2 class="categories__title">{title}</h2>
+      <h2 className="categories__title">{title}</h2>
       {children}
     </div>
   )
