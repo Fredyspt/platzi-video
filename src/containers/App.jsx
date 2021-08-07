@@ -6,50 +6,42 @@ import Categories from "../components/Categories";
 import Carousel from "../components/Carousel";
 import CarouselItem from "../components/CarouselItem";
 import Footer from "../components/Footer";
+import useInitialState from "../hooks/useInitialState";
 
 import "../assets/styles/App.scss";
-const API = 'http://localhost:3000/initalState'
+const API = "http://localhost:3000/initalState";
 
 const App = () => {
-  const [ videos, setVideos ] = useState([]);
-  
-  useEffect(() => {
-    fetch(API)
-      .then(response => response.json())
-      .then(data => setVideos(data))
-  }, []);
-  
-  console.log(videos);
+  const initialState = useInitialState(API);
 
   return (
     <React.Fragment>
       <Header />
       <Search />
 
-      <Categories title="My list">
+      {initialState.mylist.length > 0 && (
+        <Categories title="My list">
+          <Carousel>
+            {initialState.mylist.map((item) => (
+              <CarouselItem key={item.id} {...item} />
+            ))}
+          </Carousel>
+        </Categories>
+      )}
+
+      <Categories title="Trending">
         <Carousel>
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
+          {initialState.trends.map((item) => (
+            <CarouselItem key={item.id} {...item} />
+          ))}
         </Carousel>
       </Categories>
 
-      <Categories title="Featured">
+      <Categories title="Platzi Originals">
         <Carousel>
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-        </Carousel>
-      </Categories>
-
-      <Categories title="Recently added">
-        <Carousel>
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
-          <CarouselItem />
+          {initialState.originals.map((item) => (
+            <CarouselItem key={item.id} {...item} />
+          ))}
         </Carousel>
       </Categories>
 
