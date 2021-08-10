@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { connect } from 'react-redux';
 
 import Search from "../components/Search";
 import Categories from "../components/Categories";
 import Carousel from "../components/Carousel";
 import CarouselItem from "../components/CarouselItem";
-import useInitialState from "../hooks/useInitialState";
 
 import "../assets/styles/App.scss";
-const API = "http://localhost:3000/initalState";
 
-const Home = () => {
-  const initialState = useInitialState(API);
-
+const Home = ({ myList = [], trends = [], originals = [] }) => {
   return (
     <React.Fragment>
       <Search />
 
-      {initialState.mylist.length > 0 && (
+      {myList.length > 0 && (
         <Categories title="My list">
           <Carousel>
-            {initialState.mylist.map((item) => (
+            {myList.map((item) => (
               <CarouselItem key={item.id} {...item} />
             ))}
           </Carousel>
@@ -28,7 +25,7 @@ const Home = () => {
 
       <Categories title="Trending">
         <Carousel>
-          {initialState.trends.map((item) => (
+          {trends.map((item) => (
             <CarouselItem key={item.id} {...item} />
           ))}
         </Carousel>
@@ -36,7 +33,7 @@ const Home = () => {
 
       <Categories title="Platzi Originals">
         <Carousel>
-          {initialState.originals.map((item) => (
+          {originals.map((item) => (
             <CarouselItem key={item.id} {...item} />
           ))}
         </Carousel>
@@ -45,4 +42,21 @@ const Home = () => {
   );
 };
 
-export default Home;
+// mapStateToProps is connected to the Store, in which our state is,
+// it doesn't modify the state data in the store, it returns a new 
+// modified state to be used by this component.
+const mapStateToProps = state => {
+  return {
+    myList: state.myList,
+    trends: state.trends,
+    originals: state.originals,
+  };
+};
+
+// export default connect(props, actions)(Home);
+// Connects the component to the provider, so that it 
+// can access the store data, and retrieve in a new object the
+// props that it needs. Since there are no actions in this component
+// second parameter is null
+export default connect(mapStateToProps, null)(Home);
+
