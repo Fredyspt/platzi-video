@@ -8,3 +8,5 @@ const gravatar = (email) => {
   const hash = md5(formatedEmail, { encoding: 'binary'});
   return `${base}${hash}`
 }
+
+export default gravatar;
