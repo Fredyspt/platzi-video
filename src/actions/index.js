@@ -3,7 +3,8 @@ import {
   DELETE_FAVORITE,
   LOGIN_REQUEST,
   LOGOUT_REQUEST,
-  REGISTER_REQUEST
+  REGISTER_REQUEST,
+  GET_VIDEO_SOURCE
 } from "./actionTypes";
 
 // payload is the data sent to the reducer
@@ -38,6 +39,13 @@ export const logoutRequest = (payload) => {
 export const registerRequest = (payload) => {
   return {
     type: REGISTER_REQUEST,
+    payload,
+  };
+};
+
+export const getVideoSource = (payload) => {
+  return {
+    type: GET_VIDEO_SOURCE,
     payload,
   };
 };
