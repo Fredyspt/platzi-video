@@ -6,6 +6,7 @@ Video streaming web application made with React. All the videos used are sample 
 - React
 - React Router
 - Redux
+- SASS
 - Webpack
 
 ## Usage
