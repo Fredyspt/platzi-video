@@ -4,7 +4,8 @@ import {
   LOGIN_REQUEST,
   LOGOUT_REQUEST,
   REGISTER_REQUEST,
-  GET_VIDEO_SOURCE
+  GET_VIDEO_SOURCE,
+  SEARCH_ITEM
 } from "../actions/actionTypes";
 
 const reducer = (state, action) => {
@@ -43,6 +44,15 @@ const reducer = (state, action) => {
         playing: state.trends.find(item => item.id === Number(action.payload))
           || state.originals.find(item => item.id === Number(action.payload))
           || []
+      };
+    case SEARCH_ITEM:
+      const isNotSearching = action.payload === '';
+      if(isNotSearching) { return { ...state, searchResults: [] } } 
+      
+      const listas = [...state.trends, ...state.originals];
+      return {
+        ...state,
+        searchResults: listas.filter(item => item.title.toLowerCase().includes(action.payload.toLowerCase()))
       };
     default:
       return state;

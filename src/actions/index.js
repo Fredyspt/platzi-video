@@ -4,7 +4,8 @@ import {
   LOGIN_REQUEST,
   LOGOUT_REQUEST,
   REGISTER_REQUEST,
-  GET_VIDEO_SOURCE
+  GET_VIDEO_SOURCE,
+  SEARCH_ITEM
 } from "./actionTypes";
 
 // payload is the data sent to the reducer
@@ -46,6 +47,13 @@ export const registerRequest = (payload) => {
 export const getVideoSource = (payload) => {
   return {
     type: GET_VIDEO_SOURCE,
+    payload,
+  };
+};
+
+export const searchItem = (payload) => {
+  return {
+    type: SEARCH_ITEM,
     payload,
   };
 };
