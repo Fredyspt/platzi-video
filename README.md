@@ -1,5 +1,6 @@
 # Platzi Video
 Video streaming web application made with React. All the videos used are sample data retrieved from commondatastorage.googleapis.com
+[Live site](https://fredysptvideo.netlify.app/)
 
 ## Technologies used:
 
